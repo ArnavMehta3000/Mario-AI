@@ -1,3 +1,4 @@
+using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -60,6 +61,11 @@ public class MarioMovement : MonoBehaviour
 
         if (m_rb.Raycast(Vector2.right * m_velocity.x))
             m_velocity.x = 0.0f;
+
+        if (m_velocity.x > 0.0f)
+            transform.eulerAngles = Vector3.zero;
+        else if (m_velocity.x < 0.0f)
+            transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
     }
 
     void ApplyGravity()
